@@ -170,28 +170,37 @@ public class MesonerosServiceImpl implements MesonerosService{
 	
 	
 	
-	private List<Mesonero> sortByMesasAsignadas(List<Mesonero> mesoneros)
-	{	boolean cambios=true;
+	public List<Mesonero> sortByMesasAsignadas(List<Mesonero> mesoneros)
+	{	
 	
-		int i;
 		Mesonero auxMesonero;
-		while(cambios){
-		i=0;
-		while(i<mesoneros.size()-1)
-		{	cambios=false;
-			if(mesoneros.get(i).getMesasAsignadas().size()>mesoneros.get(i+1).getMesasAsignadas().size())
+		List<Mesonero> resultado=new ArrayList<Mesonero>();
+		Mesonero minMesonero=null;
+		while(!mesoneros.isEmpty())
+		{minMesonero=null;
+			for(Mesonero mesonero:mesoneros)
+			{
+				if(minMesonero==null)
+					minMesonero=mesonero;
+				else
 				{
-				auxMesonero=mesoneros.get(i+1);
-				mesoneros.set(i+1, mesoneros.get(i));
-				mesoneros.set(i, auxMesonero);
-				cambios=true;
+					if(minMesonero.getMesasAsignadas().size()>mesonero.getMesasAsignadas().size())
+						minMesonero=mesonero;
+					
+					
 				}
-				i++;
 				
+			}
+			if(minMesonero!=null)
+			{
+				resultado.add(minMesonero);
+				mesoneros.remove(minMesonero);
+			}
 		}
-		}
-		return mesoneros;
+		
+		return resultado;
 		
 	}
+	
 
 }

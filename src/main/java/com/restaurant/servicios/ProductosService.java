@@ -9,7 +9,7 @@ public interface ProductosService {
 	public Item modificarNombre(String codigo,String nombre);
 	public Item agregarPresentacion(Item item,String nombre,float precio);
 	public Item agregarPresentacion(String codigo,String nombre,float precio);
-	public Item removerPresentacion(Item item,String nombre);
+	public boolean removerPresentacion(Item item,String nombre);
 	public Item findItemByCodigo(String codigo);
 	public Item findItemByNombre(String nombre);
 	

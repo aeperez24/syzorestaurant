@@ -31,12 +31,22 @@ public class TestCrearMesonero2 {
         for (String beanName : beanNames) {
             System.out.println(beanName);
         }
-        String identificacion="v-20500317";
+        String identificacion="v-20500316";
         PersonaService perserv=ctx.getBean(PersonaServiceImpl.class);
         MesonerosService mesoserv=ctx.getBean(MesonerosServiceImpl.class);
         Persona persona=perserv.getPersonaByIdentificacion(identificacion);
         mesoserv.CreateMesonero(persona);
         
+        
+        
+        identificacion="v-20500317";
+        persona=perserv.getPersonaByIdentificacion(identificacion);
+        mesoserv.CreateMesonero(persona);
+        
+        
+        identificacion="v-20500318";
+        persona=perserv.getPersonaByIdentificacion(identificacion);
+        mesoserv.CreateMesonero(persona);
 
 	}
 }

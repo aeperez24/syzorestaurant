@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.restaurant.beans.UsuarioBean;
 import com.restaurant.dao.PersonaDao;
 import com.restaurant.dao.UsuarioDao;
 import com.restaurant.modelo.Persona;
@@ -110,6 +111,17 @@ public class PersonaServiceImpl implements PersonaService{
 		return false;
 	}
 	
+	@Override
+	public boolean validaUsuario(UsuarioBean usuario)
+	{
+		if(validaUsuario(usuario.getUsername(), usuario.getPassword()))
+		{
+			Usuario user=getUsuarioByUserName(usuario.getUsername());
+			usuario.setId(user.getId());
+			return true;
+		}
+		return false;
+	}
 	@Override
 	
 	public Usuario getUsuarioByUserName(String username)

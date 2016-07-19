@@ -32,7 +32,7 @@ public class TestCrearCliente {
         
         PersonaService perserv=ctx.getBean(PersonaServiceImpl.class);
         ClienteService clietserv=ctx.getBean(ClienteServiceImpl.class);
-        Persona persona=perserv.getPersonaByIdentificacion("v-20500316");
+        Persona persona=perserv.getPersonaByIdentificacion("v-20500315");
         clietserv.createCliente(persona);
         
 

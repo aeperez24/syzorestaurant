@@ -27,13 +27,20 @@ public class TestAsignarUsuario2 {
         for (String beanName : beanNames) {
             System.out.println(beanName);
         }
-        String identificacion="v-20500317";
-        String username="aeperez2";
+        
         PersonaService perserv=ctx.getBean(PersonaServiceImpl.class);
-        Persona persona=perserv.getPersonaByIdentificacion(identificacion);
-        Usuario user=perserv.getUsuarioByUserName(username);
+        Persona persona=perserv.getPersonaByIdentificacion("v-20500316");
+        Usuario user=perserv.getUsuarioByUserName("aeperez1");
         perserv.setUsuario(persona, user);
         
+        
+         persona=perserv.getPersonaByIdentificacion("v-20500317");
+        user=perserv.getUsuarioByUserName("aeperez2");
+        perserv.setUsuario(persona, user);
+        
+        persona=perserv.getPersonaByIdentificacion("v-20500318");
+        user=perserv.getUsuarioByUserName("aeperez3");
+        perserv.setUsuario(persona, user);
 
 	}
 }

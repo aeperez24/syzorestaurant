@@ -29,8 +29,8 @@ public class TestAsignarUsuario {
         }
         
         PersonaService perserv=ctx.getBean(PersonaServiceImpl.class);
-        Persona persona=perserv.getPersonaByIdentificacion("v-20500316");
-        Usuario user=perserv.getUsuarioByUserName("aeperez");
+        Persona persona=perserv.getPersonaByIdentificacion("v-20500315");
+        Usuario user=perserv.getUsuarioByUserName("aeperez0");
         perserv.setUsuario(persona, user);
         
 

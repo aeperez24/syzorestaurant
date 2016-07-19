@@ -29,8 +29,10 @@ public class TestCrearUsuario2 {
         }
         
         PersonaService perserv=ctx.getBean(PersonaServiceImpl.class);
-        Usuario user=perserv.createUsuario("aeperez2", "123123");
-        
+        //Usuario user=perserv.createUsuario("aeperez", "123123");
+        perserv.createUsuario("aeperez1", "123123");
+        perserv.createUsuario("aeperez2", "123123");
+        perserv.createUsuario("aeperez3", "123123");
 
 	}
 }

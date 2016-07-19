@@ -1,5 +1,6 @@
 package com.restaurant.servicios;
 
+import com.restaurant.beans.UsuarioBean;
 import com.restaurant.modelo.Persona;
 import com.restaurant.modelo.Usuario;
 //interfaz manejadora de la clase persona
@@ -16,6 +17,7 @@ public interface PersonaService {
 	public boolean validaUsuario(String username,String password);
 	public Usuario getUsuarioByUserName(String username);
 	public boolean saveUsuario(Usuario user);
+	public boolean validaUsuario(UsuarioBean usuario);
 	
 	//public Usuario resetUsuario(Usuario usuario);
 	

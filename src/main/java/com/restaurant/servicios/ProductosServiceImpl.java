@@ -99,9 +99,16 @@ public class ProductosServiceImpl implements ProductosService{
 	
 	
 	@Override
-	public Item removerPresentacion(Item item, String nombre) {
+	public boolean removerPresentacion(Item item, String nombre) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		for(Presentacion presentacion:item.getPresentaciones())
+			if(presentacion.getNombre().equals(nombre))
+			{
+				item.getPresentaciones().remove(presentacion);
+				return true;
+			}
+		return false;
 	}
 
 }

@@ -25,11 +25,23 @@ public class TestPersona2 {
         for (String beanName : beanNames) {
             System.out.println(beanName);
         }
-       String n1="eloy";
+        String n1="andres";
         String n2="perez";
-        String identificacion="v-20500317";
+        String identificacion="v-20500316";
         PersonaService perserv=ctx.getBean(PersonaServiceImpl.class);
         perserv.createPersona(n1, n2,identificacion);
+       
+        n1="luis";
+        n2="pepito";
+        identificacion="v-20500317";
+        perserv.createPersona(n1, n2,identificacion);
+       
+        
+        n1="juan";
+        n2="pepito";
+        identificacion="v-20500318";
+        perserv.createPersona(n1, n2,identificacion);
+       
        
 
 	}
