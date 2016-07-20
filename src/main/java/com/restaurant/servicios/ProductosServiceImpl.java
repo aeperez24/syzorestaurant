@@ -6,12 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.restaurant.dao.ItemDao;
+import com.restaurant.dao.PresentacionDao;
 import com.restaurant.modelo.Item;
 import com.restaurant.modelo.Presentacion;
 @Service
 public class ProductosServiceImpl implements ProductosService{
 	@Autowired
 	ItemDao itemDao;
+	@Autowired
+	PresentacionDao presendao;
 	@Override
 	public Item createItem(String codigo, String nombre, String descripcion,int categoria) {
 		// TODO Auto-generated method stub
@@ -106,9 +109,46 @@ public class ProductosServiceImpl implements ProductosService{
 			if(presentacion.getNombre().equals(nombre))
 			{
 				item.getPresentaciones().remove(presentacion);
+				presendao.delete(presentacion);//testear
+				itemDao.save(item);
 				return true;
 			}
 		return false;
+	}
+	
+	
+	@Override
+	public boolean modificarPresentacion(Item item, String nombre,float precio) {
+		// TODO Auto-generated method stub
+		
+		for(Presentacion presentacion:item.getPresentaciones())
+			if(presentacion.getNombre().equals(nombre))
+			{
+				presentacion.setPrecio(precio);
+				presendao.save(presentacion);
+				return true;
+			}
+		return false;
+	}
+	
+	@Override
+	public boolean eliminarItem(Item item)
+	{
+		
+		itemDao.delete(item);
+		return true;
+	}
+	
+	@Override
+	public int getNumeroCategoria(String categoria)
+	{	
+		for(int i=0;i<Item.categorias.length;i++)
+		{
+			
+			if(categoria.equals(Item.categorias[i]))
+				return i;
+		}
+		return 0;
 	}
 
 }

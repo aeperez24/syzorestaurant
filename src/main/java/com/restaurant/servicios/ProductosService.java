@@ -12,6 +12,9 @@ public interface ProductosService {
 	public boolean removerPresentacion(Item item,String nombre);
 	public Item findItemByCodigo(String codigo);
 	public Item findItemByNombre(String nombre);
+	public int getNumeroCategoria(String categoria);
+	public boolean modificarPresentacion(Item item, String nombre, float precio);
+	public boolean eliminarItem(Item item);
 	
 
 
