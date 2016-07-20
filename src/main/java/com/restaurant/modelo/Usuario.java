@@ -10,10 +10,11 @@ import javax.persistence.Transient;
 @Table(name="usuario")
 public class Usuario {
 	
-	public static int USUARIOCLIENTE		=	1;
-	public static int USUARIOCOCINERO		=	2;
-	public static int USUARIOMESONERO		=	3;
-	public static String tiposUsuarios[]	=	{null,"Cliente","Cocinero","Mesonero"};
+	public static int USUARIOCLIENTE			=	1;
+	public static int USUARIOCOCINERO			=	2;
+	public static int USUARIOMESONERO			=	3;
+	public static int USUARIOADMINISTRADOR		=	4;
+	public static String tiposUsuarios[]	=	{null,"Cliente","Cocinero","Mesonero","Administrador"};
 	
 	@Id
 	@GeneratedValue

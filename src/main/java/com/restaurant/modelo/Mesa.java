@@ -19,7 +19,7 @@ public class Mesa {
 	private boolean asignada;
 	
 	@OneToOne
-	private Pedido pedido;
+	private Peticion pedido;
 	private int puestos;
 	@OneToOne(fetch=FetchType.EAGER)
 	private Posicion posicion;
@@ -47,10 +47,10 @@ public class Mesa {
 	public void setOcupada(boolean ocupada) {
 		this.ocupada = ocupada;
 	}
-	public Pedido getPedido() {
+	public Peticion getPedido() {
 		return pedido;
 	}
-	public void setPedido(Pedido pedido) {
+	public void setPedido(Peticion pedido) {
 		this.pedido = pedido;
 	}
 	public int getPuestos() {

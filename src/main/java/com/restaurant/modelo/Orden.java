@@ -16,7 +16,7 @@ public class Orden {
 	private long id;
 	@OneToMany
 	
-	private List<Pedido> pedido;
+	private List<Peticion> pedido;
 	@OneToOne
 	private Mesa mesa;
 	public long getId() {
@@ -25,10 +25,10 @@ public class Orden {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public List<Pedido> getPedido() {
+	public List<Peticion> getPedido() {
 		return pedido;
 	}
-	public void setPedido(List<Pedido> pedido) {
+	public void setPedido(List<Peticion> pedido) {
 		this.pedido = pedido;
 	}
 	public Mesa getMesa() {
