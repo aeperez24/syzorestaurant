@@ -25,8 +25,8 @@ public class SyzoRestrntApplication {
             System.out.println(beanName);
         }
         
-        PersonaService perserv=ctx.getBean(PersonaServiceImpl.class);
-        perserv.savePersona(perserv.createPersona("andres", "perez","v-20500316"));
+       // PersonaService perserv=ctx.getBean(PersonaServiceImpl.class);
+       // perserv.savePersona(perserv.createPersona("andres", "perez","v-20500316"));
         
 
 	}

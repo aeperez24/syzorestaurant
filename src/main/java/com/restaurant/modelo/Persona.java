@@ -16,8 +16,8 @@ public class Persona {
 	private String nombre2;
 	private String identificacion;
 	@OneToOne
-	
 	private Usuario usuario;
+	
 	public Usuario getUsuario() {
 		return usuario;
 	}
