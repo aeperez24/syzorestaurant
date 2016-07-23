@@ -1,0 +1,5 @@
+# ignorar
+.project
+.settings
+target/
+.classpath
