@@ -29,11 +29,15 @@ public class Usuario {
 	public long getId() {
 		return id;
 	}
+	
 	public String getUsuario() {
 		return tipoUsuario;
 	}
 	public void setTipoUsuario(String tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
+	}
+	public String getTipoUsuario() {
+		return tipoUsuario;
 	}
 	public void setId(long id) {
 		this.id = id;
