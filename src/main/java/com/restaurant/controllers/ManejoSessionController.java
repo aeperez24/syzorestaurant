@@ -26,6 +26,8 @@ public class ManejoSessionController {
 	PersonaService personServ;
 	
 	
+	
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home()
 	{
@@ -90,6 +92,16 @@ public class ManejoSessionController {
 	}
 	
 	
+	@RequestMapping(value = "/creaMesonero", method = RequestMethod.GET)
+	public String pm(HttpServletRequest request)
+	{
+		UsuarioBean userbean=(UsuarioBean) request.getSession().getAttribute("Usuario");
+		if(userbean!=null)
+			{if(personServ.validaTipoUsuario(userbean.getUsername(), Usuario.tiposUsuarios[Usuario.USUARIOADMINISTRADOR]))
+				return "creacionMesoneroForm"; 
+			}
+		return "redirect:/panel";
+	}
 	
 	
 	

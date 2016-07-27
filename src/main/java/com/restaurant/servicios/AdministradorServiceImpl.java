@@ -3,6 +3,7 @@ package com.restaurant.servicios;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.restaurant.dao.AdministradorDao;
 import com.restaurant.dao.UsuarioDao;
@@ -10,6 +11,7 @@ import com.restaurant.modelo.Administrador;
 import com.restaurant.modelo.Persona;
 import com.restaurant.modelo.Usuario;
 
+@Service
 public class AdministradorServiceImpl implements AdministradorService {
 	
 	@Autowired

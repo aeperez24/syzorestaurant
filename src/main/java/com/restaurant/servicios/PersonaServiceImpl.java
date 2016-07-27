@@ -141,5 +141,17 @@ public class PersonaServiceImpl implements PersonaService{
 		usuarioDao.save(user);
 		return true;
 	}
+	@Override
+	public boolean validaTipoUsuario(String usuario,String tipo)
+	{
+		Usuario userAux=getUsuarioByUserName(usuario);
+		if(userAux!=null)
+		{
+			return userAux.getTipoUsuario().equals(tipo);
+		}
+		
+		return false;
+		
+	}
 
 }

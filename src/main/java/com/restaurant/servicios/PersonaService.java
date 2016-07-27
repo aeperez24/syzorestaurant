@@ -18,6 +18,7 @@ public interface PersonaService {
 	public Usuario getUsuarioByUserName(String username);
 	public boolean saveUsuario(Usuario user);
 	public boolean validaUsuario(UsuarioBean usuario);
+	public boolean validaTipoUsuario(String usuario, String tipo);
 	
 	//public Usuario resetUsuario(Usuario usuario);
 	
