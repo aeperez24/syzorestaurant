@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.restaurant.beans.PersonaBean;
 import com.restaurant.beans.UsuarioBean;
+import com.restaurant.modelo.Item;
 import com.restaurant.modelo.Mesonero;
 import com.restaurant.modelo.Persona;
+import com.restaurant.modelo.Presentacion;
 import com.restaurant.modelo.Usuario;
 import com.restaurant.servicios.AdministradorService;
 import com.restaurant.servicios.MesonerosService;
@@ -252,6 +254,9 @@ public class AdministracionController {
 		
 		
 	}
+
+	@RequestMapping("agregaPresentacionExe")
+	
 	public String agregarPresentacion(HttpServletRequest request,Model model)
 	{
 
@@ -262,30 +267,90 @@ public class AdministracionController {
 		//valida precio
 		float precio= Float.parseFloat(request.getParameter("precio")); 
 		
+		Item item=prodserv.findItemByNombre(nombreEntrada);
 		//validar nombre
+		if(item==null)
+			return "redirect:/";
+		
 		//validar presentacion
+		for(Presentacion presentacion:item.getPresentaciones())
+		{
+			if(presentacion.getNombre().equals(nombrePresentacion))
+				return "redirect:/";
+		}
+		
 		//valida precio
+		
+		
 		
 		//agregapresentacion
 		
+		prodserv.agregarPresentacion(item, nombrePresentacion, precio);
 		
 		
-		//manejo de errores
 		
-		
-		return "";
+		return "redirect:/";
 		
 	}
 	
+
+	
+	
+	
+	@RequestMapping("agregaPresentacionForm")
+	public String agregaPresentacionForm(HttpServletRequest request,Model model)
+	{
+		//validar usuario
+		
+		return "agregaPresentacionForm";
+		
+	}
+	
+	
+	
+
+	@RequestMapping("eliminaPresentacionForm")
+	public String eliminaPresentacionForm(HttpServletRequest request,Model model)
+	{
+		//validar usuario
+		
+		return "eliminaPresentacionForm";
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	@RequestMapping("eliminaPresentacionExe")
 	public String eliminaPresentacion(HttpServletRequest request,Model model)
 	{
 
 		//validar que es un administrador
-		String nombreEntrada;
-		String nombrePresentacion;
-	
 		
-		return "";
+		
+		
+		
+		
+		String nombreEntrada=request.getParameter("nombreI");
+		String nombrePresentacion=request.getParameter("nombreP");;
+		
+		Item item= prodserv.findItemByNombre(nombreEntrada);
+		if(item!=null)
+		{
+			for(Presentacion presentacion:item.getPresentaciones())
+			{
+				if(presentacion.getNombre().equals(nombrePresentacion))
+				{
+					prodserv.removerPresentacion(item, nombrePresentacion);
+				}
+			}
+		}
+		
+		return "redirect:/";
 		
 	}
 	
@@ -299,7 +364,7 @@ public class AdministracionController {
 		String descripcion;
 		float precio; 
 		
-		return "";
+		return "redirect:/";
 		
 	}
 	
@@ -309,16 +374,16 @@ public class AdministracionController {
 	
 	
 	
-	public String eliminaEmpleado()
-	{
-		return "";
-	}
+//	public String eliminaEmpleado()
+//	{
+//		return "";
+//	}
 	
-	public String modificaTipoEmpleado(HttpServletRequest request,Model model)
-	{
-		
-		return "";
-	}
+//	public String modificaTipoEmpleado(HttpServletRequest request,Model model)
+//	{
+//		
+//		return "";
+//	}
 	
 	
 }
