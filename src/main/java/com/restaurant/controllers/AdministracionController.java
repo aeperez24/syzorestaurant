@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.restaurant.beans.ItemBean;
 import com.restaurant.beans.PersonaBean;
 import com.restaurant.beans.UsuarioBean;
 import com.restaurant.modelo.Item;
@@ -263,7 +264,7 @@ public class AdministracionController {
 		//validar que es un administrador
 		String nombreEntrada=request.getParameter("nombreI");;
 		String nombrePresentacion=request.getParameter("nombreP");;
-		String descripcion=request.getParameter("descripcion");;
+		//String descripcion=request.getParameter("descripcion");;
 		//valida precio
 		float precio= Float.parseFloat(request.getParameter("precio")); 
 		
@@ -302,6 +303,18 @@ public class AdministracionController {
 	{
 		//validar usuario
 		
+		List<ItemBean> itemsBean=new ArrayList<ItemBean>();
+		List<Item> items=prodserv.obtenerItems();
+		for(Item item:items)
+		{
+			ItemBean itemBean=new ItemBean();
+			itemBean.setNombre(item.getNombre());
+			itemsBean.add(itemBean);
+			itemBean.setDescripcion(item.getDescripcion());
+			itemBean.setTipo(item.getCategoria());
+			
+		}
+		model.addAttribute("items",itemsBean);
 		return "agregaPresentacionForm";
 		
 	}
@@ -313,6 +326,19 @@ public class AdministracionController {
 	public String eliminaPresentacionForm(HttpServletRequest request,Model model)
 	{
 		//validar usuario
+
+		List<ItemBean> itemsBean=new ArrayList<ItemBean>();
+		List<Item> items=prodserv.obtenerItems();
+		for(Item item:items)
+		{
+			ItemBean itemBean=new ItemBean();
+			itemBean.setNombre(item.getNombre());
+			itemsBean.add(itemBean);
+			itemBean.setDescripcion(item.getDescripcion());
+			itemBean.setTipo(item.getCategoria());
+			
+		}
+		model.addAttribute("items",itemsBean);
 		
 		return "eliminaPresentacionForm";
 		
@@ -364,10 +390,16 @@ public class AdministracionController {
 		String descripcion;
 		float precio; 
 		
+		
 		return "redirect:/";
 		
 	}
 	
+	
+	
+	
+	//public String agregarMesa(){}
+	//public String eliminarMesa(){}
 	
 	
 	

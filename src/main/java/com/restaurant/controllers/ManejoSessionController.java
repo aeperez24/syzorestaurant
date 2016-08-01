@@ -6,18 +6,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.portlet.ModelAndView;
-
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.restaurant.beans.UsuarioBean;
-import com.restaurant.modelo.Persona;
 import com.restaurant.modelo.Usuario;
 import com.restaurant.servicios.PersonaService;
-import com.restaurant.servicios.PersonaServiceImpl;
 
 @Controller
 @SessionAttributes
@@ -28,9 +23,10 @@ public class ManejoSessionController {
 	
 	
 	
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home()
-	{
+	public String home() throws JsonProcessingException
+	{ 
 		
 		return "redirect:/panel";
 	}

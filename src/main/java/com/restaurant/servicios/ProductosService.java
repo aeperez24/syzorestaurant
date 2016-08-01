@@ -1,5 +1,7 @@
 package com.restaurant.servicios;
 
+import java.util.List;
+
 import com.restaurant.modelo.Item;
 import com.restaurant.modelo.Presentacion;
 
@@ -15,6 +17,7 @@ public interface ProductosService {
 	public int getNumeroCategoria(String categoria);
 	public boolean modificarPresentacion(Item item, String nombre, float precio);
 	public boolean eliminarItem(Item item);
+	public List<Item> obtenerItems();
 	
 
 

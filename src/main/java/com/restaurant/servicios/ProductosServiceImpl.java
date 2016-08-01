@@ -109,7 +109,7 @@ public class ProductosServiceImpl implements ProductosService{
 			if(presentacion.getNombre().equals(nombre))
 			{
 				item.getPresentaciones().remove(presentacion);
-				presendao.delete(presentacion);//testear
+				presendao.delete(presentacion);
 				itemDao.save(item);
 				return true;
 			}
@@ -149,6 +149,11 @@ public class ProductosServiceImpl implements ProductosService{
 				return i;
 		}
 		return 0;
+	}
+	@Override
+	public List<Item> obtenerItems()
+	{
+		return (List<Item>) itemDao.findAll();
 	}
 
 }
