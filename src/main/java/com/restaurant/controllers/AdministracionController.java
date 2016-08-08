@@ -21,6 +21,7 @@ import com.restaurant.modelo.Persona;
 import com.restaurant.modelo.Presentacion;
 import com.restaurant.modelo.Usuario;
 import com.restaurant.servicios.AdministradorService;
+import com.restaurant.servicios.MesaService;
 import com.restaurant.servicios.MesonerosService;
 import com.restaurant.servicios.PersonaService;
 import com.restaurant.servicios.ProductosService;
@@ -39,6 +40,8 @@ public class AdministracionController {
 	
 	@Autowired
 	ProductosService prodserv;
+	@Autowired
+	MesaService mesaserv;
 	@RequestMapping(value = "/creaMesoneroExe", method = RequestMethod.GET)
 	public String creaMesoneroExe(HttpServletRequest request,Model model)
 	{
@@ -396,10 +399,88 @@ public class AdministracionController {
 	}
 	
 	
+
+
+	@RequestMapping(value = "/agregaMesa", method = RequestMethod.GET)
+	public String agregaMesaForm(HttpServletRequest request,Model model)
+	{		//validacion
+		
+		
+			return "agregaMesaForm";
+		
+	}	
+	@RequestMapping(value = "/agregaMesaExe", method = RequestMethod.GET)
+	
+	public String agregarMesa(HttpServletRequest request,Model mod)
+	{
+		int posx=Integer.parseInt(request.getParameter("posX"));
+		int posy=Integer.parseInt(request.getParameter("posY"));
+		if(mesaserv.getPosicion(posx, posy)!=null)
+		{
+			if(mesaserv.getMesaInPosicion(posx, posy)==null)
+				{mesaserv.createMesa(mesaserv.getPosicion(posx, posy));}
+			else
+			{
+				System.out.println("la mesa ya existe");
+			}
+		}
+		else
+		{
+			System.out.println("la posicion no existe");
+		}
+		
+		
+		return "redirect:/";
+		
+		
+		
+	}
 	
 	
-	//public String agregarMesa(){}
-	//public String eliminarMesa(){}
+	@RequestMapping(value = "/agregaPosicion", method = RequestMethod.GET)
+	public String agregaPosicionForm(HttpServletRequest request,Model model)
+	{		//validacion
+		
+		
+			return "agregaPosicionForm";
+		
+	}	
+	@RequestMapping(value = "/agregaPosicionExe", method = RequestMethod.GET)
+	
+	public String agregarPosicion(HttpServletRequest request,Model mod)
+	{
+		int posx=Integer.parseInt(request.getParameter("posX"));
+		int posy=Integer.parseInt(request.getParameter("posY"));
+		if(mesaserv.getPosicion(posx, posy)==null)
+		{
+			mesaserv.createPosicion(posx, posy);
+		}
+		else
+		{
+			System.out.println("la posicion ya  existe");
+		}
+		
+		
+		return "redirect:/";
+		
+		
+		
+	}
+	
+
+	public String eliminarMesa(HttpServletRequest request,Model mod)
+	{
+
+		int posx=Integer.parseInt(request.getParameter("posX"));
+		int posy=Integer.parseInt(request.getParameter("posY"));
+		
+		//construir
+		
+		return "redirect:/";
+		
+		
+		
+	}
 	
 	
 	
