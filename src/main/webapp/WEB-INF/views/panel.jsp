@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 <html>
-<head><title>hola</title></head>
+<head>
+<link rel="stylesheet" type="text/css" href="/resourses/css/style.css">
+	<title>hola</title></head>
 <body>
 
 bienvenido <%out.println("usuario:"+request.getAttribute("Usuario")); %>
